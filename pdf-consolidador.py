@@ -12,8 +12,14 @@ if not os.path.exists("saida"):
 #criar um objeto PdfMerger para consolidar os PDFs
 juntar_pdf = PyPDF2.PdfMerger()
 
+#ordena arquivos numericamente para evitar problemas de ordenação
 lista_arquivos = os.listdir("entrada")
-lista_arquivos.sort()
+lista_arquivos.sort(
+    key=lambda arquivo: int(
+        os.path.splitext(arquivo)[0]
+    )
+)
+
 
 
 
